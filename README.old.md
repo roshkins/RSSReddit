@@ -10,3 +10,4 @@
 * Persist subreddits in cookies
 * sort by hot/new
 * infinite scroll
+* Preview box
