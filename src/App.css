@@ -1,24 +1,32 @@
-.App {
-  text-align: center;
+html, body{
+  width: 100%;
+  height: 100%;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+/*Posts*/
+
+.Posts{
+  float: left;
+  list-style-type: none;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.Post {
+  clear: both;
+  margin: 1em 0;
+  overflow: auto;
 }
 
-.App-intro {
-  font-size: large;
+
+
+.Score, .Thumbnail {
+  float: left;
+  margin: 0 1em;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+/*Subreddit List*/
+.SubredditList {
+  float:left;
+}
+.Subreddits {
+  list-style-type: circle;
 }
