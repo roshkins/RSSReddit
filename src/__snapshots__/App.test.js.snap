@@ -72,7 +72,8 @@ exports[`test survives refactoring without changing ui 1`] = `
          to 
         <span
           className="Subreddit">
-          r/mildlyinteresting
+          r/
+          mildlyinteresting
         </span>
       </div>
       <div>
@@ -112,7 +113,8 @@ exports[`test survives refactoring without changing ui 1`] = `
          to 
         <span
           className="Subreddit">
-          r/mildlyinteresting
+          r/
+          mildlyinteresting
         </span>
       </div>
       <div>
@@ -133,13 +135,12 @@ exports[`test survives refactoring without changing ui 1`] = `
         alt="thumbnail"
         className="Thumbnail"
         src="//b.thumbs.redditmedia.com/AwdUKfpVjz_1T7JMPfePIrS34IgEbtvEy_dWlr3bHmE.jpg" />
-      <div
-        className="Info">
-        <a
-          className="title"
-          href="#">
-          An entire DLSR camera, disassembled.
-        </a>
+      <a
+        className="title"
+        href="#">
+        An entire DLSR camera, disassembled.
+      </a>
+      <div>
         submitted 
         <span
           className="SubmissionTime">
@@ -153,15 +154,16 @@ exports[`test survives refactoring without changing ui 1`] = `
          to 
         <span
           className="Subreddit">
-          r/mildlyinteresting
+          r/
+          mildlyinteresting
         </span>
-        <div>
-          <a
-            className="Comment"
-            href="#">
-            Comment
-          </a>
-        </div>
+      </div>
+      <div>
+        <a
+          className="Comment"
+          href="#">
+          Comment
+        </a>
       </div>
     </li>
   </ol>
