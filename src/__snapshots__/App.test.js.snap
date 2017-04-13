@@ -10,27 +10,33 @@ exports[`test survives refactoring without changing ui 1`] = `
       className="Subreddits">
       <li
         className="Subreddit">
-        r/AskReddit
+        r/
+        AskReddit
       </li>
       <li
         className="Subreddit">
-        r/gadgets
+        r/
+        gadgets
       </li>
       <li
         className="Subreddit">
-        r/sports
+        r/
+        sports
       </li>
       <li
         className="Subreddit">
-        r/pics
+        r/
+        pics
       </li>
       <li
         className="Subreddit">
-        r/worldnews
+        r/
+        worldnews
       </li>
       <li
         className="Subreddit">
-        r/gaming
+        r/
+        gaming
       </li>
       <li>
         <form>

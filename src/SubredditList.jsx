@@ -7,12 +7,9 @@ class SubredditList extends Component {
       <div className="SubredditList">
         <h1>Filter Subreddits</h1>
         <ul className="Subreddits">
-          <li className="Subreddit">r/AskReddit</li>
-          <li className="Subreddit">r/gadgets</li>
-          <li className="Subreddit">r/sports</li>
-          <li className="Subreddit">r/pics</li>
-          <li className="Subreddit">r/worldnews</li>
-          <li className="Subreddit">r/gaming</li>
+          {this.props.initialSubreddits.map((subreddit, index) => {
+            return (<li key={index} className="Subreddit">r/{subreddit}</li>);
+          })}
           <li>
             <form>
               <input type="text" placeholder="r/subreddit" />
@@ -26,6 +23,7 @@ class SubredditList extends Component {
 }
 
 SubredditList.propTypes = {
+  initialSubreddits: PropTypes.arrayOf(PropTypes.string),
   createSubreddit: PropTypes.func.isRequired,
   deleteSubreddit: PropTypes.func.isRequired,
 };

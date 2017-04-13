@@ -12,7 +12,15 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <SubredditList />
+        <SubredditList
+          initialSubreddits={[
+            "AskReddit",
+            "gadgets",
+            "sports",
+            "pics",
+            "worldnews",
+            "gaming"
+          ]} />
         <ol className="Posts">
           {[0,0,0].map((object, index) => {
             return (<Post score="17.1k"
