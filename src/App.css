@@ -70,6 +70,7 @@ html, body{
 /*Subreddit List*/
 .SubredditList {
   float:left;
+  cursor: pointer;
 }
 .SubredditList .Subreddit {
   float: left;

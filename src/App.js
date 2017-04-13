@@ -23,6 +23,23 @@ class App extends Component {
       } )
       this.loadPosts();
     } )
+
+    //bind callbacks
+
+    this.createSubreddit = this.createSubreddit.bind(this);
+    this.deleteSubreddit = this.deleteSubreddit.bind(this);
+  }
+
+  createSubreddit(subredditName) {
+    this.state.subredditDirectory.push(subredditName);
+    this.setState(this.state);
+    this.loadPosts();
+  }
+
+  deleteSubreddit(index) {
+    this.state.subredditDirectory.splice(index, 1);
+    this.setState(this.state);
+    this.loadPosts();
   }
 
   loadPosts() {
@@ -53,12 +70,15 @@ class App extends Component {
     return (
       <div className="App">
         <SubredditList
-          initialSubreddits={this.state.subredditDirectory} />
+          initialSubreddits={this.state.subredditDirectory}
+          createSubreddit={this.createSubreddit}
+          deleteSubreddit={this.deleteSubreddit}
+        />
         <ol className="Posts">
           {this.state.posts.map((post, index) => {
             return (<Post
               thumbnail={post.thumbnail}
-              score={post.score}
+              score={post.score.toString()}
               linkUrl={post.linkUrl}
               title={post.title}
               submissionTime={post.submissionTime}
