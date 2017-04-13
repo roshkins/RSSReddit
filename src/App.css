@@ -14,6 +14,7 @@ html, body{
   clear: both;
   margin: 1em 0;
   overflow: auto;
+  position: relative;
 }
 
 
@@ -23,9 +24,57 @@ html, body{
   margin: 0 1em;
 }
 
+.Thumbnail {
+  position: relative;
+  min-height: 3em;
+}
+
+.Thumbnail::after {
+  content: ' ';
+  display: block;
+  position: absolute;
+  z-index: 2;
+  background-color: #fff;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+
+.Thumbnail::before {
+  content: ' ';
+  margin-left: 25px;
+  background: url("https://www.redditstatic.com/sprite-reddit.6Om8v6KMv28.png");
+  background-position: -10px -1099px;
+  background-repeat: no-repeat;
+  display: block;
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  width: 50px;
+  height: 50px;
+
+}
+
+.Score {
+  width: 5em;
+}
+
+.PostInfo {
+
+  float: left;
+  width: 60%;
+}
+
 /*Subreddit List*/
 .SubredditList {
   float:left;
+}
+.SubredditList .Subreddit {
+  float: left;
+  margin-left: 2em;
+  margin-top: 1pt;
 }
 .Subreddits {
   list-style-type: circle;

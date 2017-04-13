@@ -10,7 +10,7 @@ class SubredditList extends Component {
           {this.props.initialSubreddits.map((subreddit, index) => {
             return (<li key={index} className="Subreddit">r/{subreddit}</li>);
           })}
-          <li>
+          <li className="Subreddit">
             <form>
               <input type="text" placeholder="r/subreddit" />
             </form>
