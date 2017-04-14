@@ -17,6 +17,10 @@ a {
   font-size: 14pt;
 }
 
+div {
+  outline: none;
+}
+
 /*Posts*/
 
 .Posts{
