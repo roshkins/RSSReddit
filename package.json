@@ -18,5 +18,5 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "http://roshkins.github.io/rss-reddit"
+  "homepage": "http://roshkins.github.io/RSSReddit"
 }
