@@ -18,6 +18,7 @@ class SubredditList extends Component {
     this.props.createSubreddit(
       subredditEntry.value
     );
+    subredditEntry.value = "";
   }
 
   render() {
