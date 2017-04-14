@@ -31,8 +31,12 @@ div {
 .Post {
   clear: both;
   margin: 1em 0;
-  overflow: auto;
+  overflow: hidden;
   position: relative;
+}
+
+.Error {
+  background-color: #600;
 }
 
 

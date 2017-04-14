@@ -15,6 +15,12 @@ class SubredditList extends Component {
   createSubreddit(e){
     e.preventDefault();
     const subredditEntry = document.getElementById('subredditEntry');
+    if (subredditEntry.value.length === 0) {
+      subredditEntry.className += " Error";
+      return;
+    }
+    var classNames = subredditEntry.className.split(/ /);
+    subredditEntry.className = classNames.splice(classNames.indexOf('Error'), 1).join(' ');
     this.props.createSubreddit(
       subredditEntry.value
     );

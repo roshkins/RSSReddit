@@ -17,7 +17,7 @@ class Post extends Component {
           &nbsp;to&nbsp;
           <span className="Subreddit">r/{this.props.subreddit}</span>
           <div>
-            <a className="Comment" href={this.props.commentLink}>Comment</a>
+            <a className="Comment" href={this.props.commentLink}>{(this.props.commentCount > 0) ? this.props.commentCount + " comments" : "No comments yet"}</a>
           </div>
         </div>
       </li>
@@ -33,7 +33,8 @@ Post.propTypes = {
   submissionTime: PropTypes.instanceOf(Date).isRequired,
   author: PropTypes.string.isRequired,
   subreddit: PropTypes.string.isRequired,
-  commentLink: PropTypes.string.isRequired
+  commentLink: PropTypes.string.isRequired,
+  commentCount: PropTypes.number.isRequired
 };
 
 export default Post;

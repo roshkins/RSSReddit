@@ -11,6 +11,8 @@ class App extends Component {
       subredditDirectory: [],
       posts: [],
       easteregg: [],
+      nextThing: "",
+      loadingPosts: false,
     };
 
     //load subreddits
@@ -26,10 +28,16 @@ class App extends Component {
     } )
 
     //bind callbacks
-
     this.createSubreddit = this.createSubreddit.bind(this);
     this.deleteSubreddit = this.deleteSubreddit.bind(this);
     this.easterEgg = this.easterEgg.bind(this);
+    this.infiniteScroll = this.infiniteScroll.bind(this);
+
+    window.addEventListener('scroll', this.infiniteScroll);
+  }
+
+  componentWillUnmount(){
+    window.removeEventListener('scroll', this.infiniteScroll);
   }
 
   createSubreddit(subredditName) {
@@ -39,8 +47,10 @@ class App extends Component {
   }
 
   deleteSubreddit(index) {
-    this.state.subredditDirectory.splice(index, 1);
-    this.setState(this.state);
+    var tempState = this.state;
+    tempState.subredditDirectory.splice(index, 1);
+    tempState.nextThing = "";
+    this.setState(tempState);
     this.loadPosts();
   }
 
@@ -56,13 +66,11 @@ class App extends Component {
   }
 
   loadPosts() {
-    window.fetch("//www.reddit.com/r/" +
-      this.state.subredditDirectory.join( "+" ) + ".json" )
-    .then( ( response ) => { return response.json(); } )
-    .then( ( responseJson ) =>
+    var previousPosts = [];
+    var resolvePosts = ( responseJson ) =>
     {
       this.setState( {
-        posts: responseJson.data.children.map( ( child ) => {
+        posts: previousPosts.concat(responseJson.data.children.map( ( child ) => {
           var data = child.data;
           return {
             score: data.score,
@@ -72,16 +80,48 @@ class App extends Component {
             submissionTime: new Date(data.created_utc),
             author: data.author,
             subreddit: data.subreddit,
-            commentLink: "//www.reddit.com" + data.permalink
+            commentLink: "//www.reddit.com" + data.permalink,
+            commentCount: data.num_comments
           }
-        } )
-      } );
-    } )
+        } )),
+        nextThing: responseJson.data.after,
+        loadingPosts: false,
+      });
+    };
+
+    if (this.state.nextThing) {
+      //append posts
+      previousPosts = previousPosts.concat(this.state.posts);
+      window.fetch("//www.reddit.com/r/" +
+        this.state.subredditDirectory.join( "+" ) +
+        ".json?after=" + this.nextThing + "&limit=50" )
+      .then( ( response ) => { return response.json(); } )
+      .then( resolvePosts );
+    } else {
+      //replace posts
+      window.fetch("//www.reddit.com/r/" +
+        this.state.subredditDirectory.join( "+" ) +
+        ".json" )
+      .then( ( response ) => { return response.json(); } )
+      .then( resolvePosts );
+    }
+  }
+
+  infiniteScroll() {
+    //if you've scrolled 90 perceont of the page, you probably want more
+    if (window.scrollY > 0.9 * window.innerWidth && !this.state.loadingPosts) {
+      this.setState({loadingPosts: true});
+      this.loadPosts();
+    }
   }
 
   render() {
     return (
-      <div className="App" onKeyDown={this.easterEgg} tabIndex={1}>
+      <div
+        className="App"
+        onKeyDown={this.easterEgg}
+        tabIndex={1}
+        >
         <SubredditList
           initialSubreddits={this.state.subredditDirectory}
           createSubreddit={this.createSubreddit}
@@ -98,6 +138,7 @@ class App extends Component {
               author={post.author}
               subreddit={post.subreddit}
               commentLink={post.commentLink}
+              commentCount={post.commentCount}
               key={index}
               />);
           })}
