@@ -9,7 +9,8 @@ class App extends Component {
     super(props);
     this.state = {
       subredditDirectory: [],
-      posts: []
+      posts: [],
+      easteregg: [],
     };
 
     //load subreddits
@@ -28,6 +29,7 @@ class App extends Component {
 
     this.createSubreddit = this.createSubreddit.bind(this);
     this.deleteSubreddit = this.deleteSubreddit.bind(this);
+    this.easterEgg = this.easterEgg.bind(this);
   }
 
   createSubreddit(subredditName) {
@@ -40,6 +42,17 @@ class App extends Component {
     this.state.subredditDirectory.splice(index, 1);
     this.setState(this.state);
     this.loadPosts();
+  }
+
+  easterEgg(e) {
+    this.state.easteregg.push(e.keyCode);
+    if( this.state.easteregg.length >= 11 && this.state.easteregg.slice(-11).every((value, index) => {
+      return value === [38, 38, 40, 40, 37, 39, 37, 39, 66, 65, 13][index];
+    })){
+      document.getElementsByTagName('body')[0].className += " easter-egg"
+    } else {
+      this.setState(this.state);
+    }
   }
 
   loadPosts() {
@@ -68,7 +81,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="App" onKeyDown={this.easterEgg} tabIndex={1}>
         <SubredditList
           initialSubreddits={this.state.subredditDirectory}
           createSubreddit={this.createSubreddit}
