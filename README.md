@@ -20,3 +20,9 @@
 1. Clone into a folder
 2. If necessary, install 'react'
 2. execute `npm start` at your terminal of choice
+
+# How to use
+
+1. click the subreddits up top to remove them from your feed
+2. Type in the name of a subreddit and press enter in the textbox to add
+3. Scroll down to scroll infinitely
