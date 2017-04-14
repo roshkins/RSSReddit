@@ -94,7 +94,7 @@ class App extends Component {
       previousPosts = previousPosts.concat(this.state.posts);
       window.fetch("//www.reddit.com/r/" +
         this.state.subredditDirectory.join( "+" ) +
-        ".json?after=" + this.nextThing + "&limit=50" )
+        ".json?after=" + this.state.nextThing + "&limit=50" )
       .then( ( response ) => { return response.json(); } )
       .then( resolvePosts );
     } else {
