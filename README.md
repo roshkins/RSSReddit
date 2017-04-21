@@ -18,7 +18,7 @@
 ## Or
 
 1. Clone into a folder
-2. If necessary, install 'react'
+2. $`npm install`
 2. execute `npm start` at your terminal of choice
 
 # How to use
