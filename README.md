@@ -7,7 +7,7 @@
 * Merge all subreddits into one page
 
 
-#BONUS FEATURES!
+# BONUS FEATURES!
 * Happy Easter! Do the Konami Code (press on your keyboard up up down down left right left right b a enter) for a fun surprise!
 * Infinite scrolling! Scroll down and you will see more!
 
